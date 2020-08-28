@@ -25,8 +25,8 @@ center = np.floor_divide(RESOLUTION, 2)
 #r = np.min(center) - INFLOW_PADDING
 
 x,y = np.meshgrid(np.linspace(-RESOLUTION[0]/2,RESOLUTION[0]/2,RESOLUTION[0]),np.linspace(-RESOLUTION[1]/2,RESOLUTION[1]/2,RESOLUTION[1]))
-u = (-y/np.sqrt((x+20)**2 + y**2+1))*np.e**(-((x+20)**2 + y**2)/1000)-(y/np.sqrt((x-20)**2 + y**2+1))*np.e**(-((x-20)**2 + y**2)/1000)
-v = ((x+20)/np.sqrt((x+20)**2 + y**2+1))*np.e**(-((x+20)**2 + y**2)/1000)+((x-20)/np.sqrt((x-20)**2 + y**2+1))*np.e**(-((x-20)**2 + y**2)/1000)
+u = (-y/np.sqrt((x+40)**2 + y**2+1))*np.e**(-((x+40)**2 + y**2)/10000)-(y/np.sqrt((x-40)**2 + y**2+1))*np.e**(-((x-40)**2 + y**2)/10000)-((y-45)/np.sqrt((x)**2 + (y-45)**2+1))*np.e**(-((x)**2+(y-45)**2)/10000)
+v = ((x+40)/np.sqrt((x+40)**2 + y**2+1))*np.e**(-((x+40)**2 + y**2)/10000)+((x-40)/np.sqrt((x-40)**2 + y**2+1))*np.e**(-((x-40)**2 + y**2)/10000)+(x/np.sqrt((x)**2 + (y-45)**2+1))*np.e**(-((x)**2 + (y-45)**2)/10000)
 
 
 directions = tuple([v[t][p],u[t][p]] for t in range(RESOLUTION[1]) for p in range(RESOLUTION[0]))#tuple(-circle(p * np.pi * 1 / 6) for p in range(2))
